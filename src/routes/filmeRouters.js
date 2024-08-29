@@ -14,6 +14,15 @@ router.get('/', (req, res) => {
 
 } ); 
 
+router.get("/:id", (req, res) =>{
+        try{
+            filme.BuscarFilmePorId(req, res);
+        }
+        catch(err){
+            res.status(500).json({erro: err.message});
+        }
+});
+
 router.post('/', (req, res) => {
     try{
         filme.CadastrarFilme(req, res);
@@ -23,11 +32,4 @@ router.post('/', (req, res) => {
     }
 
 });
-
-
-
-
-
-
-
 export default router;
